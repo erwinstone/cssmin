@@ -33,7 +33,7 @@ cssmin dist/css --watch
 npm install @erwinstone/cssmin
 ```
 ```javascript
-import { cssmin, cssminStr } from '@erwinstone/cssmin'
+import { cssmin, cssminRaw } from '@erwinstone/cssmin'
 
 await cssmin({
 	path: 'dist/css',
@@ -48,7 +48,7 @@ await cssmin({
 
 // or
 
-await cssminStr(`
+await cssminRaw(`
 	div {
 		color: yellow;
 	}

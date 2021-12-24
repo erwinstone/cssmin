@@ -71,7 +71,7 @@ export async function cssmin(params: cssminParams) {
 	}
 }
 
-export async function cssminStr(style: string) {
+export async function cssminRaw(style: string) {
 	return (await transform(style, { loader: 'css', minify: true })).code
 }
 
