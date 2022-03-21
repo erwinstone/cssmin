@@ -1,6 +1,6 @@
 /*!
-* @erwinstone/cssmin v1.0.0 (https://github.com/erwinstone/cssmin#readme)
-* Copyright 2021 erwinstone
+* @erwinstone/cssmin v1.0.2 (https://github.com/erwinstone/cssmin#readme)
+* Copyright 2021 - 2022 erwinstone
 * Licensed under MIT (https://github.com/erwinstone/cssmin/blob/master/LICENSE)
 */
 import{promises as o}from"fs";import{posix as f}from"path";import{performance as a}from"perf_hooks";import{watch as l}from"chokidar";import{transform as u,build as h}from"esbuild";const e={starting:t=>(console.log(`Starting '${t}'...`),a.now()),finished:(t,n)=>{let s=Math.round(a.now()-n),i=s>=1e3?`${(s/1e3).toFixed(2)} s`:`${Math.round(s)} ms`;i=i.toString(),console.log(`Finished '${t}' after ${i}`)}};async function c(t,n){n=n||[];const s=await o.readdir(t);for(const i of s){const r=f.join(t,i);(await o.stat(r)).isDirectory()?n=await c(r,n):n.push(r)}return g(n)}function g(t){return t.filter(n=>n.endsWith(".css")&&!n.endsWith(".min.css"))}async function m(t){const n=e.starting("cssmin");let s=[];(await o.stat(t)).isDirectory()?s=await c(t):s.push(t),await Promise.all(s.map(i=>{h({entryPoints:[i],outfile:i.slice(0,-3)+"min.css",minify:!0})})),e.finished("cssmin",n)}function p(t){l(t,{ignoreInitial:!0}).on("all",(n,s)=>setTimeout(async()=>!s.endsWith(".min.css")&&await m(t),200)).on("ready",()=>console.log("Ready for changes"))}async function P(t){t.watch===!0?p(t.path):await m(t.path)}async function b(t){return(await u(t,{loader:"css",minify:!0})).code}export{P as cssmin,b as cssminRaw};

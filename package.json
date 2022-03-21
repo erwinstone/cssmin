@@ -1,6 +1,6 @@
 {
 	"name": "@erwinstone/cssmin",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Fast css minifier",
 	"bin": "dist/bin.js",
 	"main": "dist/main.js",
@@ -38,13 +38,13 @@
 		"build-dts-esm": "shx cp dist/main.d.ts dist/main.esm.d.ts"
 	},
 	"dependencies": {
-		"chokidar": "^3.5.2",
-		"esbuild": "^0.14.8"
+		"chokidar": "^3.5.3",
+		"esbuild": "^0.14.27"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.4",
+		"@types/node": "^17.0.21",
 		"npm-run-all": "^4.1.5",
-		"shx": "^0.3.3",
-		"typescript": "^4.5.4"
+		"shx": "^0.3.4",
+		"typescript": "^4.6.2"
 	}
 }
